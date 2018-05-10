@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE [hub].[@-----@hub]
+AS
+BEGIN
+SET NOCOUNT ON;
+/*
+
+*/
+END

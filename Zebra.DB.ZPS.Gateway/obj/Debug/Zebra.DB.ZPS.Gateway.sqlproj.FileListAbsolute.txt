@@ -1,0 +1,10 @@
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\bin\Debug\Zebra.DB.ZPS.Gateway.dacpac
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\Zebra.DB.ZPS.Gateway.dll
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\Zebra.DB.ZPS.Gateway.pdb
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\bin\Debug\Zebra.DB.ZPS.Gateway.dll
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\bin\Debug\Zebra.DB.ZPS.Gateway.pdb
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\Zebra.DB.ZPS.Gateway.sqlprojResolveAssemblyReference.cache
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\Model.xml
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\refactor.xml
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\postdeploy.sql
+D:\Developer\Repos\Zebra\ZPSGateway\Zebra.DB.ZPS.Gateway\obj\Debug\predeploy.sql

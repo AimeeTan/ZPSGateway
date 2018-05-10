@@ -1,0 +1,12 @@
+﻿---- Smile
+--CREATE FUNCTION [svc].[Account$LastInvoice]()
+--RETURNS TABLE
+--WITH SCHEMABINDING, ENCRYPTION
+--AS RETURN
+--(
+--	select	x.ID, PartyID, Alias, InvoiceNbr, CurrencyID, VaultType, InvoicedOn=isnull(max(InvoicedOn), '0001-01-01')
+--	from	acct.Invoice#Raw() x
+--	join	core.Party#Raw()   p on x.PartyID=p.ID
+--	where	x.ID>0
+--	group	by x.ID, PartyID, Alias, InvoiceNbr, CurrencyID, VaultType
+--)

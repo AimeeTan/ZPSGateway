@@ -1,0 +1,1 @@
+﻿CREATE SCHEMA [vmi] AUTHORIZATION [dbo];

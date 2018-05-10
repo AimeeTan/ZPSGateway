@@ -1,0 +1,42 @@
+﻿----Smile
+--CREATE FUNCTION [vmi].[Parcel$DetailVia]()
+--RETURNS	TABLE
+--WITH SCHEMABINDING--, ENCRYPTION
+--AS RETURN
+--(
+--	select	x.ID, MIC=m.Number, ClientRef=c.Number, PostCourier=u.Number, SkuCnt, SkuQty
+--	,		Stage, OutgatedOn=isnull(OutgatedOn,''), w.RouteCode, Weight, a.CourierCode
+--	,		cn.CountryCode, cn.Province, cn.City, cn.District, cn.PostalCode, TenantAlias
+--	from	core.Matter#Raw() x
+--	join	shpt.Parcel#Raw() p on x.ID=p.ID
+--	join	tms.Route#Raw()   w on w.ID=p.RouteID
+--	join	tms.Courier#Raw() a on a.ID=p.LastMilerID
+--	cross	apply core.Party#Type() ty
+--	join	core.Party#Raw() si on si.ID=x.PosterID and si.Type=ty.TenantSite
+--	join	core.Party#Raw() st on st.ID=si.PID and st.Type=ty.Tenant
+--	cross	apply loc.TenantAlias#Rectify(st.Alias) al
+--	cross	apply core.RefNbr#Type() t
+--	join	core.RefNbr#Raw() m on m.MatterID=x.ID and m.Type=t.MIT
+--	join	core.RefNbr#Raw() c on c.MatterID=x.ID and c.Type=t.ClientRef
+--	join	core.RefNbr#Raw() u on u.MatterID=x.ID and u.Type=t.PostCourier
+--	cross	apply core.RefInfo#Type() i
+--	join	core.RefInfo#Raw() d on d.MatterID=x.ID and d.Type=i.DeclaredInfo
+--	cross	apply (select SkuCnt=count(*) from tvp.Mucho#Slice(d.Info)) s
+--	cross	apply (
+--					select	SkuQty=sum(l.LineQty) 
+--					from	tvp.Mucho#Slice(d.Info) s
+--					cross	apply loc.LineInfo#Of(s.Piece)         l
+--				  ) n
+--	join	core.RefInfo#Raw() ct on ct.MatterID=x.ID and ct.Type=i.CneeInfo
+--	cross	apply loc.Contact#Of(ct.Info) cn
+--	outer	apply(
+--					select	top(1) OutgatedOn=TalliedOn
+--					from	core.Activity#Raw()   a
+--					join    core.State#Raw()      t on a.StateID=t.ID
+--					cross	apply core.Stage#ID() k
+--					where	Stage=k.Outgated and MatterID=x.ID
+					
+--				) o
+--	cross	apply core.Source#ID() k
+--	where	x.Source=k.eVMI
+--)

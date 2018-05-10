@@ -1,0 +1,20 @@
+﻿
+----Smile.Wang
+--CREATE FUNCTION [shpt].[ChargeableWt#For](@svcType int, @weight real, @length real, @width real, @height real)
+--RETURNS TABLE
+--WITH SCHEMABINDING, ENCRYPTION
+--AS RETURN
+--(
+--	with cte as
+--	(
+--		select	VolumeWt=  round(@length*@weight*@width/5000*1000, 2)
+--		,		MeasuredWt=@weight
+--	)
+--	select	case x.WeightMethod 
+--			when k.VolumeWt     then iif(w.VolumeWt>w.MeasuredWt, w.VolumeWt, w.MeasuredWt)
+--	        when k.HalfVolumeWt then iif(w.VolumeWt>w.MeasuredWt, round((w.VolumeWt+w.MeasuredWt)/2, 2), w.MeasuredWt)
+--			end  as ChargeableWt
+--	from	tms.SvcType#Raw() x, cte w
+--	cross	apply tms.WeightMethod#Type() k
+--	where	ID=@svcType
+--)

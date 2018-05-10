@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Zebra.DB.ZPS.Gateway</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{68432c53-d2e1-41df-83e0-a61931bb7d71}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Zebra.DB.ZPS.Gateway</RootNamespace>
+    <AssemblyName>Zebra.DB.ZPS.Gateway</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultSchema>svc</DefaultSchema>
+    <GenerateSqlClrSymbols>True</GenerateSqlClrSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\BIN\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="svc" />
+    <Folder Include="svc\Actions" />
+    <Folder Include="svc\Functions" />
+    <Folder Include="app" />
+    <Folder Include="app\Actions" />
+    <Folder Include="api" />
+    <Folder Include="api\Actions" />
+    <Folder Include="api\Functions" />
+    <Folder Include="rpt" />
+    <Folder Include="rpt\Functions" />
+    <Folder Include="zeb" />
+    <Folder Include="zeb\Actions" />
+    <Folder Include="zeb\Functions" />
+    <Folder Include="%40ToLIB" />
+    <Folder Include="%40ToLIB\Actions" />
+    <Folder Include="%40ToLIB\Functions" />
+    <Folder Include="ic" />
+    <Folder Include="hub" />
+    <Folder Include="bo" />
+    <Folder Include="co" />
+    <Folder Include="ic\Actions" />
+    <Folder Include="ic\Functions" />
+    <Folder Include="hub\Actions" />
+    <Folder Include="hub\Functions" />
+    <Folder Include="bo\Actions" />
+    <Folder Include="bo\Functions" />
+    <Folder Include="co\Actions" />
+    <Folder Include="co\Functions" />
+    <Folder Include="api\Tables" />
+    <Folder Include="vmi" />
+    <Folder Include="vmi\Functions" />
+    <Folder Include="vmi\Actions" />
+    <Folder Include="xpd" />
+    <Folder Include="xpd\Actions" />
+    <Folder Include="xpd\Functions" />
+    <Folder Include="auto" />
+    <Folder Include="auto\Actions" />
+    <Folder Include="lc" />
+    <Folder Include="lc\Actions" />
+    <Folder Include="lc\Functions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="svc\Actions\%40-------------%40svc.sql" />
+    <Build Include="svc\Actions\Account_Transact.sql" />
+    <Build Include="svc\Actions\HubManifest_Import.sql" />
+    <Build Include="svc\Actions\ICManifest_Import.sql" />
+    <Build Include="svc\Actions\IDNbr_Import.sql" />
+    <Build Include="svc\Actions\Message_Post.sql" />
+    <Build Include="svc\Actions\Parcel_CfmCustomsStatus.sql" />
+    <Build Include="svc\Actions\Parcel_CheckIn.sql" />
+    <Build Include="svc\Actions\Parcel_Measure.sql" />
+    <Build Include="svc\Actions\Parcel_MergeBrkgInfo.sql" />
+    <Build Include="svc\Actions\Parcel_Transit.sql" />
+    <Build Include="svc\Actions\Parcel_Verify.sql" />
+    <Build Include="svc\Actions\Route_Confirm.sql" />
+    <Build Include="svc\Actions\SackMft_MergeStamp.sql" />
+    <Build Include="svc\Actions\SackMft_Release.sql" />
+    <Build Include="svc\Actions\SackMft_Transit.sql" />
+    <Build Include="svc\Actions\Sku_Import.sql" />
+    <Build Include="svc\Actions\Sku_ImportEndorsement.sql" />
+    <Build Include="svc\Functions\%40-------------svc.sql" />
+    <Build Include="svc\Functions\Batch_ExportError.sql" />
+    <Build Include="svc\Functions\Batch_ExportForAmazon.sql" />
+    <Build Include="svc\Functions\Batch_ExportSuccess.sql" />
+    <Build Include="svc\Functions\Batch_Summary.sql" />
+    <Build Include="svc\Functions\Account_Ledger.sql" />
+    <Build Include="svc\Functions\Account_Lookup.sql" />
+    <Build Include="svc\Functions\Challenge_BoundStage.sql" />
+    <Build Include="svc\Functions\ClrMethod_BrokerLookup.sql" />
+    <Build Include="svc\Functions\ClrMethod_Lookup.sql" />
+    <Build Include="svc\Functions\Commodity_Fuzzy.sql" />
+    <Build Include="svc\Functions\Commodity_Node.sql" />
+    <Build Include="svc\Functions\Commodity_Root.sql" />
+    <Build Include="svc\Functions\Message_List.sql" />
+    <Build Include="svc\Functions\Parcel_Detail.sql" />
+    <Build Include="svc\Functions\Parcel_DetailVia.sql" />
+    <Build Include="svc\Functions\Parcel_ForBrokerage.sql" />
+    <Build Include="svc\Functions\Parcel_ForLoadBalance.sql" />
+    <Build Include="svc\Functions\Parcel_List.sql" />
+    <Build Include="svc\Functions\Parcel_Track.sql" />
+    <Build Include="svc\Functions\Parcel_TrackMany.sql" />
+    <Build Include="svc\Functions\Parcel_TrackOne.sql" />
+    <Build Include="svc\Functions\ClientRefNbr_Verify.sql" />
+    <Build Include="svc\Functions\Port_List.sql" />
+    <Build Include="svc\Functions\SackMft_List.sql" />
+    <Build Include="svc\Functions\SackMft_MawbInfo.sql" />
+    <Build Include="svc\Functions\Sku_DutyList.sql" />
+    <Build Include="svc\Functions\Sku_ForEndorsement.sql" />
+    <Build Include="svc\Functions\Sku_Verify.sql" />
+    <Build Include="svc\Functions\Tenancy_For.sql" />
+    <Build Include="svc\Functions\Tenancy_TenantLookup.sql" />
+    <Build Include="svc\Functions\VaultXact_Summary.sql" />
+    <Build Include="svc\svc.sql" />
+    <Build Include="app\Actions\%40------------%40app.sql" />
+    <Build Include="app\Actions\Parcel_InitForAmz.sql" />
+    <Build Include="app\Actions\Parcel_InitForEship.sql" />
+    <Build Include="app\app.sql" />
+    <Build Include="api\Actions\%40------------%40api.sql" />
+    <Build Include="api\Actions\Brokerage_Dequeue.sql" />
+    <Build Include="api\Actions\Parcel_RcvBrkgAcceptance.sql" />
+    <Build Include="api\Actions\Parcel_RcvBrkgRejection.sql" />
+    <Build Include="api\Functions\%40-------------api.sql" />
+    <Build Include="api\api.sql" />
+    <Build Include="rpt\Functions\%40-------rpt.sql" />
+    <Build Include="rpt\Functions\Dashboard_ParcelSummary.sql" />
+    <Build Include="rpt\Functions\Dashboard_StageSummary.sql" />
+    <Build Include="rpt\Functions\Dashboard_Summary.sql" />
+    <Build Include="rpt\rpt.sql" />
+    <Build Include="zeb\zeb.sql" />
+    <Build Include="zeb\Actions\@------------@zeb.sql" />
+    <Build Include="zeb\Functions\@-------------zeb.sql" />
+    <Build Include="zeb\Functions\Parcel_ViaBarcode.sql" />
+    <Build Include="zeb\Functions\Matter_Type.sql" />
+    <Build Include="zeb\Functions\RefNbr_Type.sql" />
+    <Build Include="zeb\Functions\Party_Type.sql" />
+    <Build Include="zeb\Functions\Queue_Type.sql" />
+    <Build Include="zeb\Functions\RefInfo_Type.sql" />
+    <Build Include="zeb\Functions\User_Role.sql" />
+    <Build Include="zeb\Functions\Contact_Type.sql" />
+    <Build Include="zeb\Functions\Challenge_Tvp.sql" />
+    <Build Include="zeb\Functions\Matter_Raw.sql" />
+    <Build Include="zeb\Functions\RefInfo_Of.sql" />
+    <Build Include="zeb\Functions\RefInfo_Tvp.sql" />
+    <Build Include="zeb\Functions\RefNbr_Tvp.sql" />
+    <Build Include="zeb\Functions\RefNbr_Of.sql" />
+    <Build Include="zeb\Functions\RefNbr_ExistedCnt.sql" />
+    <Build Include="zeb\Actions\OutboundQ_Dequeue.sql" />
+    <Build Include="zeb\Actions\RefNbr_Merge.sql" />
+    <Build Include="%40ToLIB\Functions\Freight_For.sql" />
+    <Build Include="%40ToLIB\Functions\DutyRate_For.sql" />
+    <Build Include="%40ToLIB\Functions\Parcel_FreightAndDutyFor.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_TalliedOrDeduct.sql" />
+    <Build Include="svc\Functions\Parcel_RefInfoFor.sql" />
+    <Build Include="svc\Actions\Parcel_MergeRefInfo.sql" />
+    <Build Include="svc\Actions\Account_InvoiceTallied.sql" />
+    <Build Include="svc\Functions\X_Account_LastInvoice.sql" />
+    <Build Include="svc\Functions\Account_InvoiceSummary.sql" />
+    <Build Include="svc\Actions\Account_AssignPayment.sql" />
+    <Build Include="@ToLIB\Actions\Vault_XactByInvoice.sql" />
+    <Build Include="svc\Functions\Account_VaultBalFor.sql" />
+    <Build Include="api\Actions\Parcel_Init.sql" />
+    <Build Include="hub\hub.sql" />
+    <Build Include="ic\ic.sql" />
+    <Build Include="bo\bo.sql" />
+    <Build Include="co\co.sql" />
+    <Build Include="svc\Actions\Parcel_MergePostCourier.sql" />
+    <Build Include="hub\Actions\ShippingPlan_Comply.sql" />
+    <Build Include="hub\Functions\Parcel_ShippingPlanVia.sql" />
+    <Build Include="hub\Functions\Parcel_SortingInfoVia.sql" />
+    <Build Include="svc\Functions\Parcel_ExceptionList.sql" />
+    <Build Include="zeb\Actions\RefInfo_Merge.sql" />
+    <Build Include="zeb\Functions\Parcel_RePacked.sql" />
+    <Build Include="svc\Functions\X_Parcel_ForInventoryCfm.sql" />
+    <Build Include="ic\Actions\ShippingPlan_Compose.sql" />
+    <Build Include="ic\Actions\Parcel_PromoteToShippingPlan.sql" />
+    <Build Include="zeb\Actions\ShippingPlan_Concur.sql" />
+    <Build Include="svc\Actions\Parcel_ComposeShippingPlan.sql" />
+    <Build Include="svc\Actions\Parcel_PromoteToShippingPlan.sql" />
+    <Build Include="svc\Functions\Account_InvoiceList.sql" />
+    <Build Include="svc\Functions\MIC_Verify.sql" />
+    <Build Include="%40ToLIB\Functions\Ledger_FreightTvpFor.sql" />
+    <Build Include="@ToLIB\Functions\Ledger_DutyTvpFor.sql" />
+    <Build Include="svc\Functions\Parcel_ListForRef.sql" />
+    <Build Include="bo\Functions\Account_ExportForDutyInvoice.sql" />
+    <Build Include="bo\Functions\Account_ExportForFreightInvoice.sql" />
+    <Build Include="svc\Actions\ShippingPlan_Return.sql" />
+    <Build Include="svc\Actions\ShippingPlan_Fallback.sql" />
+    <Build Include="svc\Functions\Parcel_ShippingPlanList.sql" />
+    <Build Include="api\Actions\Parcel_InitorForUnFiled.sql" />
+    <Build Include="bo\Functions\@-------------------------bo.sql" />
+    <Build Include="hub\Functions\@------------------hub.sql" />
+    <Build Include="ic\Actions\Parcel_MergeStamp.sql" />
+    <Build Include="ic\Actions\@-------------@ic.sql" />
+    <Build Include="svc\Functions\Tenancy_ZebraHubLookup.sql" />
+    <Build Include="svc\Functions\Parcel_OutgatedList.sql" />
+    <Build Include="svc\Actions\HubManifest_ImportForUSPS.sql" />
+    <Build Include="svc\Functions\Parcel_ScanOne.sql" />
+    <Build Include="svc\Functions\SackMft_Export.sql" />
+    <Build Include="zeb\Actions\Parcel_InitForZeb.sql" />
+    <Build Include="svc\Functions\Invoice_ProcessingList.sql" />
+    <Build Include="svc\Actions\Sku_ImportByPlatform.sql" />
+    <Build Include="svc\Actions\Tenancy_Import.sql" />
+    <Build Include="svc\Functions\Sku_VerifyForPlatform.sql" />
+    <Build Include="svc\Functions\ClientRefNbr_VerifyForPlatform.sql" />
+    <Build Include="svc\Functions\Parcel_ExportForPlatform.sql" />
+    <Build Include="api\Actions\Parcel_InitForPlatform.sql" />
+    <Build Include="svc\Functions\Parcel_ForStage.sql" />
+    <Build Include="svc\Functions\Commodity_FuzzyRoot.sql" />
+    <Build Include="co\Functions\@------------------co.sql" />
+    <Build Include="co\Functions\Parcel_SummaryByStage.sql" />
+    <Build Include="co\Functions\Parcel_ForPending.sql" />
+    <Build Include="svc\Functions\Parcel_TrackManyForZPS.sql" />
+    <Build Include="svc\Actions\Tenancy_AddSite.sql" />
+    <Build Include="svc\Actions\Tenancy_AddTenant.sql" />
+    <Build Include="svc\Actions\Tenancy_AddUser.sql" />
+    <Build Include="api\Functions\MIC_VerifyForPlatform.sql" />
+    <Build Include="api\Actions\Parcel_UpdateForPlatform.sql" />
+    <Build Include="zeb\Functions\Matter_LatestStage.sql" />
+    <Build Include="zeb\Functions\Stage_ID.sql" />
+    <Build Include="svc\Functions\Broker_Lookup.sql" />
+    <Build Include="svc\Functions\Parcel_ForCreateSackMft.sql" />
+    <Build Include="svc\Actions\Challenge_Pull.sql" />
+    <Build Include="%40ToLIB\Functions\Message_Tvp.sql" />
+    <Build Include="hub\Functions\Challenge_List.sql" />
+    <Build Include="hub\Actions\Sack_Close.sql" />
+    <Build Include="zeb\Functions\RefNbr_ScanOne.sql" />
+    <Build Include="hub\Functions\SackMft_Summary.sql" />
+    <Build Include="hub\Functions\Sack_InManifest.sql" />
+    <Build Include="svc\Functions\Parcel_CriteriaForLoadBalance.sql" />
+    <Build Include="hub\Actions\Sack_Create.sql" />
+    <Build Include="hub\Functions\Parcel_InSack.sql" />
+    <Build Include="hub\Functions\Parcel_ScanOneForSacking.sql" />
+    <Build Include="svc\Actions\Parcel_MergeIDInfo.sql" />
+    <Build Include="svc\Functions\MftGroup_Lookup.sql" />
+    <Build Include="hub\Actions\@-----@hub.sql" />
+    <Build Include="svc\Actions\SackMft_Import.sql" />
+    <Build Include="svc\Functions\Parcel_VerifyForSackMft.sql" />
+    <Build Include="svc\Actions\Tenancy_UpdateContact.sql" />
+    <Build Include="svc\Functions\SackMft_ExportForOutgate.sql" />
+    <Build Include="svc\Functions\Tenancy_Subtype.sql" />
+    <Build Include="svc\Functions\Tenancy_SiteList.sql" />
+    <Build Include="svc\Functions\Tenancy_SiteInfoList.sql" />
+    <Build Include="svc\Functions\Tenancy_TenantInfoList.sql" />
+    <Build Include="co\Functions\Tenancy_UserList.sql" />
+    <Build Include="hub\Actions\Sack_Load.sql" />
+    <Build Include="hub\Functions\Trucker_List.sql" />
+    <Build Include="hub\Functions\Sack_ScanOne.sql" />
+    <Build Include="ic\Functions\@--------------ic.sql" />
+    <Build Include="ic\Functions\SackMft_ForOutgated.sql" />
+    <Build Include="svc\Functions\Flight_List.sql" />
+    <Build Include="svc\Functions\Flight_Verify.sql" />
+    <Build Include="svc\Functions\Tenancy_UserInfoList.sql" />
+    <Build Include="svc\Actions\Flight_Import.sql" />
+    <Build Include="hub\Actions\Sack_Reload.sql" />
+    <Build Include="hub\Actions\SackLoad_Transload.sql" />
+    <Build Include="hub\Functions\SackLoad_List.sql" />
+    <Build Include="%40ToLIB\Functions\Matter_ANodeDn.sql" />
+    <Build Include="svc\Actions\Flight_Assign.sql" />
+    <Build Include="hub\Functions\Sack_InLoad.sql" />
+    <Build Include="hub\Functions\SackLoad_ScanOne.sql" />
+    <Build Include="%40ToLIB\Functions\Matter_NodeDn.sql" />
+    <Build Include="%40ToLIB\Actions\Matter_CascadeAllBySpec.sql" />
+    <Build Include="svc\Functions\RefNbr_SearchFor.sql" />
+    <Build Include="svc\Functions\Announcement_For.sql" />
+    <Build Include="svc\Actions\SackMft_UpdMawbNbr.sql" />
+    <Build Include="svc\Actions\Parcel_Void.sql" />
+    <Build Include="@ToLIB\Functions\VaultXact_LastBalFor.sql" />
+    <Build Include="ic\Functions\Parcel_ForExportActivityInfo.sql" />
+    <Build Include="svc\Functions\Sku_VerifyForEndorsement.sql" />
+    <Build Include="hub\Actions\Parcel_SortForRackIn.sql" />
+    <Build Include="hub\Actions\RackInOrder_Complete.sql" />
+    <Build Include="hub\Functions\Parcel_CheckForRackIn.sql" />
+    <Build Include="hub\Actions\RackInOrder_Init.sql" />
+    <Build Include="hub\Actions\RackOutOrder_Init.sql" />
+    <Build Include="hub\Functions\Parcel_CheckForRackOut.sql" />
+    <Build Include="hub\Functions\RackOutOrder_ListFor.sql" />
+    <Build Include="svc\Actions\CourierNbr_Fetch.sql" />
+    <Build Include="hub\Actions\Parcel_TryRack.sql" />
+    <Build Include="hub\Actions\RackOutOrder_Complete.sql" />
+    <Build Include="api\Actions\Parcel_InitForPlatformUnFiled.sql" />
+    <Build Include="api\Actions\Parcel_UpdateForPlatformUnfiled.sql" />
+    <Build Include="%40ToLIB\Functions\Declared_ToBrokerage.sql" />
+    <Build Include="svc\Functions\CustomerCode_Verify.sql" />
+    <Build Include="zeb\Actions\Parcel_UpdForZeb.sql" />
+    <Build Include="svc\Actions\Parcel_SurrenderByImport.sql" />
+    <Build Include="svc\Functions\Parcel_ExceptionListFor.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_UnfiledMPSInitByPlatform.sql" />
+    <Build Include="zeb\Actions\Zack_InitForZeb.sql" />
+    <Build Include="svc\Actions\Parcel_VoidViaMic.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_UnfiledCPSInitByPlatform.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_UnfiledNormalInitByPlatform.sql" />
+    <Build Include="api\Actions\Parcel_UnfiledInitByPlatform.sql" />
+    <Build Include="svc\Actions\Parcel_ChangeRouteToUsps.sql" />
+    <Build Include="zeb\Functions\Matter_TobeVia.sql" />
+    <Build Include="svc\Functions\Parcel_ScanMultiForAutomation.sql" />
+    <Build Include="svc\Actions\Parcel_CfmRelease.sql" />
+    <Build Include="api\Actions\Parcel_InitForHandWrittenOrder.sql" />
+    <Build Include="svc\Functions\CurrencyRate_Summary.sql" />
+    <Build Include="svc\Functions\Parcel_ForMeasureNotice.sql" />
+    <Build Include="co\Actions\PaymentPlan_Init.sql" />
+    <Build Include="co\Actions\@-----------@co.sql" />
+    <Build Include="svc\Actions\SackMft_ImportWithLabelInfo.sql" />
+    <Build Include="co\Actions\Account_Deposit.sql" />
+    <Build Include="%40ToLIB\Actions\Parcel_ReleaseByDeposit.sql" />
+    <Build Include="ic\Functions\Parcel_ForHandWrittenOrder.sql" />
+    <Build Include="ic\Actions\Parcel_MergeHandWrittenOrder.sql" />
+    <Build Include="co\Functions\Payment_DetailFor.sql" />
+    <Build Include="svc\Actions\Parcel_Classified.sql" />
+    <Build Include="svc\Functions\Parcel_ForOutgatedNotice.sql" />
+    <Build Include="ic\Actions\Parcel_RequeueBrkgApi.sql" />
+    <Build Include="svc\Functions\Parcel_ForOnboardedNotice.sql" />
+    <Build Include="svc\Functions\Parcel_ForArrivedNotice.sql" />
+    <Build Include="api\Actions\PostCourier_Dequeue.sql" />
+    <Build Include="bo\Actions\@-------------@bo.sql" />
+    <Build Include="bo\Actions\CurrencyRate_Maintain.sql" />
+    <Build Include="svc\Actions\Parcel_CfmDoorDeliverd.sql" />
+    <Build Include="svc\Functions\Parcel_ListForCainiao.sql" />
+    <Build Include="api\Tables\_ActivitySubscription.sql" />
+    <Build Include="api\Actions\Activity_Subscribe.sql" />
+    <Build Include="api\Functions\ActivitySubscription_Raw.sql" />
+    <Build Include="api\Actions\SubscribeCallback_Dequeue.sql" />
+    <Build Include="svc\Functions\Tenancy_SiteVerify.sql" />
+    <Build Include="hub\Functions\Sack_DetailForPrint.sql" />
+    <Build Include="%40ToLIB\Functions\Activity_TrackSpecific.sql" />
+    <Build Include="co\Functions\Payment_Verify.sql" />
+    <Build Include="app\Actions\Parcel_InitForAmzNonSku.sql" />
+    <Build Include="ic\Actions\ShippingPlan_Rollback.sql" />
+    <Build Include="bo\Actions\Account_DepositFor.sql" />
+    <Build Include="hub\Actions\Parcel_ReleaseForUsps.sql" />
+    <Build Include="ic\Actions\Handler_Assigned.sql" />
+    <Build Include="svc\Functions\Parcel_ForUploadIDPicture.sql" />
+    <Build Include="api\Actions\IDInfo_Dequeue.sql" />
+    <Build Include="svc\Actions\Setting_Update.sql" />
+    <Build Include="svc\Functions\Setting_ByName.sql" />
+    <Build Include="ic\Actions\Parcel_Bounce.sql" />
+    <Build Include="svc\Functions\BizUnit_Lookup.sql" />
+    <Build Include="hub\Functions\Sack_List.sql" />
+    <Build Include="hub\Actions\Sack_Init.sql" />
+    <Build Include="hub\Actions\SackMft_Create.sql" />
+    <Build Include="hub\Functions\Sack_ScanOneForMft.sql" />
+    <Build Include="hub\Actions\Sack_ReBag.sql" />
+    <Build Include="svc\Functions\SalesRep_Lookup.sql" />
+    <Build Include="api\Actions\PolyCallback_Dequeue.sql" />
+    <Build Include="zeb\Actions\PIP_InitForZeb.sql" />
+    <Build Include="api\Actions\IDInfoReview_Dequeue.sql" />
+    <Build Include="svc\Functions\Account_VaultSummary.sql" />
+    <Build Include="hub\Functions\Sack_Parcels.sql" />
+    <Build Include="svc\Actions\Parcel_RequestIDInfo.sql" />
+    <Build Include="svc\Functions\Account_VaultBalance.sql" />
+    <Build Include="svc\Functions\Account_ForCreditLimitExceeded.sql" />
+    <Build Include="svc\Actions\Parcel_CfmIDInfo.sql" />
+    <Build Include="svc\Functions\SvcContract_For.sql" />
+    <Build Include="svc\Functions\User_List.sql" />
+    <Build Include="svc\Functions\Parcel_ExportByIDs.sql" />
+    <Build Include="svc\Actions\AddOnSvc_Post.sql" />
+    <Build Include="svc\Functions\Payment_Summary.sql" />
+    <Build Include="svc\Actions\Parcel_MergeRefInfoByMics.sql" />
+    <Build Include="bo\Actions\Account_UpdateContract.sql" />
+    <Build Include="zeb\Actions\Parcel_Reset.sql" />
+    <Build Include="zeb\Actions\PIP_Append.sql" />
+    <Build Include="hub\Functions\Parcel_InParcel.sql" />
+    <Build Include="hub\Functions\Parcel_ScanOneForTearOff.sql" />
+    <Build Include="bo\Actions\Account_ImportSvcRate.sql" />
+    <Build Include="hub\Actions\PIP_TearOff.sql" />
+    <Build Include="api\Actions\Snapshot_Merge.sql" />
+    <Build Include="svc\Actions\Flight_Transit.sql" />
+    <Build Include="hub\Functions\Parcel_UnityInfoVia.sql" />
+    <Build Include="hub\Functions\Parcel_ListForMedium.sql" />
+    <Build Include="svc\Functions\User_ContactName.sql" />
+    <Build Include="hub\Actions\Parcel_Unified.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_Measure.sql" />
+    <Build Include="%40ToLIB\Functions\Measure_Todo.sql" />
+    <Build Include="%40ToLIB\Actions\Parcel_TryRackOut.sql" />
+    <Build Include="@ToLIB\Functions\Siblings_Cnt.sql" />
+    <Build Include="%40ToLIB\Functions\Siblings_CntInRack.sql" />
+    <Build Include="%40ToLIB\Actions\Orphan_Init.sql" />
+    <Build Include="svc\Actions\Parcel_MergePreCourier.sql" />
+    <Build Include="svc\Functions\User_Summary.sql" />
+    <Build Include="@ToLIB\Functions\UserRole_Tvp.sql" />
+    <Build Include="svc\Functions\Parcel_WithChallenge.sql" />
+    <Build Include="%40ToLIB\Actions\Orphan_Adopt.sql" />
+    <Build Include="app\Actions\Parcel_InitWithSku.sql" />
+    <Build Include="ic\Actions\Concern_Post.sql" />
+    <Build Include="svc\Actions\Parcel_ImportBrkgInfo.sql" />
+    <Build Include="%40ToLIB\Actions\PreCourier_Concern.sql" />
+    <Build Include="%40ToLIB\Actions\PreCourier_ConcernBlock.sql" />
+    <Build Include="svc\Functions\Parcel_VerifyDutyCode.sql" />
+    <Build Include="svc\Actions\Parcel_ImportClassified.sql" />
+    <Build Include="svc\Functions\Tenancy_ZebraStoreLookup.sql" />
+    <Build Include="vmi\vmi.sql" />
+    <Build Include="vmi\Functions\@-------------vmi.sql" />
+    <Build Include="vmi\Actions\@-------------@vmi.sql" />
+    <Build Include="vmi\Functions\StockInOrder_Summary.sql" />
+    <Build Include="vmi\Functions\AsnNbr_Verify.sql" />
+    <Build Include="vmi\Actions\StockInOrder_Create.sql" />
+    <Build Include="vmi\Actions\StockInOrder_Import.sql" />
+    <Build Include="vmi\Actions\StockInOrder_Racked.sql" />
+    <Build Include="vmi\Actions\StockInOrder_Void.sql" />
+    <Build Include="vmi\Actions\Parcel_Init.sql" />
+    <Build Include="ic\Functions\Parcel_WithConcern.sql" />
+    <Build Include="vmi\Actions\Parcel_Release.sql" />
+    <Build Include="vmi\Actions\Parcel_ReceivedWeight.sql" />
+    <Build Include="vmi\Actions\HubMft_Import.sql" />
+    <Build Include="xpd\xpd.sql" />
+    <Build Include="xpd\Actions\@------------@xpd.sql" />
+    <Build Include="xpd\Actions\Parcel_InitForXpd.sql" />
+    <Build Include="xpd\Actions\Parcel_MeasureForXpd.sql" />
+    <Build Include="app\Actions\Parcel_InitForUsd.sql" />
+    <Build Include="svc\Functions\Parcel_LabelVia.sql" />
+    <Build Include="svc\Functions\Parcel_Label.sql" />
+    <Build Include="vmi\Actions\StockInOrder_HubVerified.sql" />
+    <Build Include="%40ToLIB\Actions\RcvSkuFee_Bill.sql" />
+    <Build Include="xpd\Actions\Flight_ImportForXpd.sql" />
+    <Build Include="xpd\Actions\Sack_CreateForXpd.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_BillForVmi.sql" />
+    <Build Include="@ToLIB\Functions\Parcel_LedgerForVmi.sql" />
+    <Build Include="svc\Actions\Contact_Merge.sql" />
+    <Build Include="svc\Actions\Contact_DefaultTo.sql" />
+    <Build Include="svc\Functions\Contact_List.sql" />
+    <Build Include="vmi\Actions\StorageFee_Bill.sql" />
+    <Build Include="vmi\Functions\Tenancy_For.sql" />
+    <Build Include="vmi\Functions\Parcel_Summary.sql" />
+    <Build Include="app\Actions\Parcel_InitForAae.sql" />
+    <Build Include="svc\Functions\Parcel_ScanOneForApp.sql" />
+    <Build Include="%40ToLIB\Functions\Appointment_Base.sql" />
+    <Build Include="svc\Functions\Appointment_List.sql" />
+    <Build Include="svc\Functions\Ramper_List.sql" />
+    <Build Include="svc\Functions\Appointment_ListForRamper.sql" />
+    <Build Include="svc\Actions\Appointment_Init.sql" />
+    <Build Include="svc\Actions\Appointment_Dispatch.sql" />
+    <Build Include="%40ToLIB\Actions\RefParty_MergeVia.sql" />
+    <Build Include="svc\Functions\CourierAlias_Verify.sql" />
+    <Build Include="svc\Actions\Appointment_StartOff.sql" />
+    <Build Include="svc\Actions\Appointment_CancelStartOff.sql" />
+    <Build Include="svc\Actions\Appointment_CallOff.sql" />
+    <Build Include="svc\Actions\Appointment_Complete.sql" />
+    <Build Include="vmi\Functions\Parcel_Detail.sql" />
+    <Build Include="vmi\Functions\Parcel_List.sql" />
+    <Build Include="vmi\Actions\Parcel_Void.sql" />
+    <Build Include="vmi\Functions\Parcel_SummaryByStage.sql" />
+    <Build Include="svc\Functions\Parcel_DetailForSubscribe.sql" />
+    <Build Include="api\Actions\PostCourier_DequeueForPull.sql" />
+    <Build Include="%40ToLIB\Functions\RefNbr_Of.sql" />
+    <Build Include="svc\Functions\Account_StockInOrderLedger.sql" />
+    <Build Include="svc\Functions\Account_StorageFees.sql" />
+    <Build Include="ic\Actions\Parcel_Outgated.sql" />
+    <Build Include="svc\Functions\Parcel_DutyEstimate.sql" />
+    <Build Include="vmi\Functions\AccountBal_Verify.sql" />
+    <Build Include="vmi\Functions\Parcel_ForExport.sql" />
+    <Build Include="api\Actions\PostCourier_DequeueForTC.sql" />
+    <Build Include="api\Actions\Subscriber_DequeueForTC.sql" />
+    <Build Include="api\Actions\Parcel_CfmDoorDeliverd.sql" />
+    <Build Include="%40ToLIB\I64TrioAmts.sql" />
+    <Build Include="@ToLIB\Functions\TotalSkuQty_For.sql" />
+    <Build Include="svc\Functions\FileBankID_Lookup.sql" />
+    <Build Include="@ToLIB\Functions\TenantAlias_Encode.sql" />
+    <Build Include="xpd\Actions\SackMft_UploadLabelForXpd.sql" />
+    <Build Include="xpd\Actions\Parcel_UpdateForXpd.sql" />
+    <Build Include="bo\Actions\AssortedFees_Bill.sql" />
+    <Build Include="xpd\Functions\SackMft_Verify.sql" />
+    <Build Include="svc\Functions\Account_AssortedFees.sql" />
+    <Build Include="vmi\Functions\Invoice_SummaryForSasa.sql" />
+    <Build Include="xpd\Functions\Parcel_Verify.sql" />
+    <Build Include="%40ToLIB\Functions\BrokerageFee_For.sql" />
+    <Build Include="vmi\Functions\Parcel_SummaryVia.sql" />
+    <Build Include="svc\Functions\Parcel_ListVia.sql" />
+    <Build Include="svc\Functions\Parcel_TrackForXpd.sql" />
+    <Build Include="zeb\Actions\Appt_InitForZeb.sql" />
+    <Build Include="vmi\Functions\Parcel_DetailVia.sql" />
+    <Build Include="ic\Actions\Sack_CreateForImport.sql" />
+    <Build Include="vmi\Actions\StockInOrder_Init.sql" />
+    <Build Include="xpd\Actions\Parcel_ReweighForXpd.sql" />
+    <Build Include="svc\Functions\Parcel_ClearanceForXpd.sql" />
+    <Build Include="vmi\Functions\Parcel_TrackMany.sql" />
+    <Build Include="vmi\Functions\Account_VaultBalFor.sql" />
+    <Build Include="vmi\Functions\SvcContract_For.sql" />
+    <Build Include="vmi\Functions\ClientRefNbr_Vefity.sql" />
+    <Build Include="auto\Actions\%40-------------auto.sql" />
+    <Build Include="auto\Actions\Parcel_Measure.sql" />
+    <Build Include="auto\auto.sql" />
+    <Build Include="%40ToLIB\Functions\Parcel_Routing.sql" />
+    <Build Include="%40ToLIB\Functions\Ramp_Routing.sql" />
+    <Build Include="%40ToLIB\Functions\Parcel_PreSorting.sql" />
+    <Build Include="@ToLIB\Actions\Parcel_BillForFactor.sql" />
+    <Build Include="hub\Functions\Parcel_ShippingPlanInfo.sql" />
+    <Build Include="hub\Actions\Parcel_EndOfDayForUSD.sql" />
+    <Build Include="svc\Actions\HubManifest_ImportToSurrender.sql" />
+    <Build Include="vmi\Actions\StockInOrder_InitForCainiao.sql" />
+    <Build Include="hub\Actions\Parcel_MeasureForUSD.sql" />
+    <Build Include="svc\Functions\Parcel_VerifyForOutgated.sql" />
+    <Build Include="hub\Functions\Activity_Lookup.sql" />
+    <Build Include="bo\Functions\Account_IncomeSummary.sql" />
+    <Build Include="bo\Actions\Account_ChargeOffInvoice.sql" />
+    <Build Include="vmi\Actions\Parcel_ChangeSvcTypeForCainiao.sql" />
+    <Build Include="xpd\Functions\Sack_Verify.sql" />
+    <Build Include="hub\Actions\Parcel_UpdAddOnSvcOverlabel.sql" />
+    <Build Include="lc\lc.sql" />
+    <Build Include="lc\Actions\%40-------------%40lc.sql" />
+    <Build Include="lc\Functions\@--------------@lc.sql" />
+    <Build Include="lc\Actions\Parcel_Measure.sql" />
+    <Build Include="lc\Actions\Parcel_CheckIn.sql" />
+    <Build Include="lc\Functions\Parcel_Sorting.sql" />
+    <Build Include="lc\Functions\Parcel_ShippingPlanVia.sql" />
+    <Build Include="hub\Functions\Parcel_ForUSDEndOfDay.sql" />
+    <Build Include="@ToLIB\Functions\Hub_ByPOA.sql" />
+    <Build Include="api\Actions\PostCourierAPI_Dequeue.sql" />
+    <Build Include="svc\Functions\Parcel_ForFedEx.sql" />
+    <Build Include="%40ToLIB\Functions\AddOnSvc_TotalUnfinished.sql" />
+    <Build Include="@ToLIB\Functions\ZoneCode_For.sql" />
+    <Build Include="@ToLIB\Actions\SackMft_BillForCharge.sql" />
+    <Build Include="@ToLIB\Functions\SackMft_LedgerByCharge.sql" />
+    <Build Include="@ToLIB\Functions\SackMft_MawbWtRateCalc.sql" />
+    <Build Include="@ToLIB\Functions\SackMft_HawbCntRateCalc.sql" />
+    <Build Include="%40ToLIB\Functions\ChargeableWt_For.sql" />
+    <Build Include="svc\Functions\Parcel_VerifyForEMS.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ZIP-LOC.publish.xml" />
+    <None Include="ZIP-UAT.publish.xml" />
+    <None Include="ZIP-SBX.publish.xml" />
+    <Build Include="hub\Actions\Sack_Void.sql" />
+    <None Include="ZIP-DEV.publish.xml" />
+    <None Include="ZIP-TEST.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="..\LIB\Zebra.DB.dacpac">
+      <HintPath>..\LIB\Zebra.DB.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <Private>False</Private>
+    </ArtifactReference>
+    <ArtifactReference Include="..\LIB\Zebra.DB.ZIP.dacpac">
+      <HintPath>..\LIB\Zebra.DB.ZIP.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <Private>False</Private>
+    </ArtifactReference>
+    <ArtifactReference Include="..\LIB\Zebra.DB.ZIP.Local.dacpac">
+      <HintPath>..\LIB\Zebra.DB.ZIP.Local.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <Private>False</Private>
+    </ArtifactReference>
+    <ArtifactReference Include="..\LIB\Zebra.DB.ZPS.dacpac">
+      <HintPath>..\LIB\Zebra.DB.ZPS.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <Private>False</Private>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Zebra.DB.ZIP.refactorlog" />
+  </ItemGroup>
+</Project>

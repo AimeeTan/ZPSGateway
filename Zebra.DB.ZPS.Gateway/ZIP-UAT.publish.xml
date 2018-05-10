@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<IncludeCompositeObjects>True</IncludeCompositeObjects>
+	<TargetDatabaseName>ZIP_UAT</TargetDatabaseName>
+	<DeployScriptFileName>ZIP-UAT.sql</DeployScriptFileName>
+	<TargetConnectionString>Data Source=10.29.134.38;Persist Security Info=True;User ID=zps_uat;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+	<ProfileVersionNumber>1</ProfileVersionNumber>
+	<BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+	<DropObjectsNotInSource>True</DropObjectsNotInSource>
+	<DoNotDropDatabaseRoles>True</DoNotDropDatabaseRoles>
+	<DoNotDropLogins>True</DoNotDropLogins>
+	<DoNotDropLinkedServers>True</DoNotDropLinkedServers>
+	<DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+	<DoNotDropServerRoleMembership>True</DoNotDropServerRoleMembership>
+	<DoNotDropServerRoles>True</DoNotDropServerRoles>
+	<DoNotDropDatabaseScopedCredentials>True</DoNotDropDatabaseScopedCredentials>
+	<DoNotDropLinkedServerLogins>True</DoNotDropLinkedServerLogins>
+	<DoNotDropSequences>True</DoNotDropSequences>
+	<DoNotDropServerAuditSpecifications>True</DoNotDropServerAuditSpecifications>
+	<DoNotDropUsers>True</DoNotDropUsers>
+	<ExcludeDatabaseRoles>True</ExcludeDatabaseRoles>
+	<ExcludeDatabaseScopedCredentials>True</ExcludeDatabaseScopedCredentials>
+	<ExcludeLinkedServerLogins>True</ExcludeLinkedServerLogins>
+	<ExcludeLinkedServers>True</ExcludeLinkedServers>
+	<ExcludeLogins>True</ExcludeLogins>
+	<IgnorePermissions>True</IgnorePermissions>
+	<IgnoreRoleMembership>True</IgnoreRoleMembership>
+	<ExcludeSequences>True</ExcludeSequences>
+	<ExcludeServerRoleMembership>True</ExcludeServerRoleMembership>
+	<ExcludeServerRoles>True</ExcludeServerRoles>
+	<ExcludeUsers>True</ExcludeUsers>
+  </PropertyGroup>
+  <ItemGroup>
+	<SqlCmdVariable Include="FLUX_SERVER">
+	  <Value>FLUXWMSTEST</Value>
+	</SqlCmdVariable>
+	<SqlCmdVariable Include="FLUX_WMS">
+	  <Value>FLUX_WMS</Value>
+	</SqlCmdVariable>
+  </ItemGroup>
+</Project>
